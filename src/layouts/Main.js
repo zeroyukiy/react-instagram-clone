@@ -33,7 +33,7 @@ const Main = () => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
               id luctus metus. Donec hendrerit ultricies nisl, sed aliquet ex
               laoreet eu. Cras vulputate in nibh eleifend vehicula. Pellentesque
-              blandit vel.{" "}
+              blandit vel.
             </p>
           </div>
         </div>
