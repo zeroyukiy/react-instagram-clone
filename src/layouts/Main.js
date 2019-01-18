@@ -1,4 +1,5 @@
 import React from "react";
+import Gallery from "../features/Gallery";
 
 const Main = () => {
   return (
@@ -39,11 +40,7 @@ const Main = () => {
         </div>
       </div>
       {/* <div className="menu">menu</div> */}
-      <div className="gallery">
-        <div className="card"></div>
-        <div className="card"></div>
-        <div className="card aa"></div>
-      </div>
+      <Gallery />
     </main>
   );
 };
