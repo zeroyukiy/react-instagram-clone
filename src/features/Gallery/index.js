@@ -7,7 +7,7 @@ export default class Gallery extends Component {
       <div className="gallery">
         <GalleryImage />
         <GalleryImage />
-        <GalleryImage marginRight={0}/>
+        <GalleryImage marginRight={0} />
       </div>
     );
   }
