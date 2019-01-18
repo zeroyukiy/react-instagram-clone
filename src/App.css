@@ -235,3 +235,10 @@ main .gallery {
     height: 260px;
   }
 } */
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  background: url("http://www.tophersworld.com/imagesb/fade-spinner.gif") no-repeat center center;
+  background-size: cover;
+}
