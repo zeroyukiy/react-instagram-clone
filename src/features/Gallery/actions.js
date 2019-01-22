@@ -29,14 +29,20 @@
 //   };
 // };
 
-import { fetchUser } from "./api";
+import { fetchImage } from "./api";
 
 export const getImages = () => {
   return async dispatch => {
-    const user = await fetchUser();
-    dispatch({
-      type: "GET_IMAGES",
-      images: user[0]
-    });
+    let images = [];
+    for (let i = 0; i < 5; i++) {
+      const image = await fetchImage();
+      await images.push(image);
+    }
+    setTimeout(() => {
+      dispatch({
+        type: "GET_IMAGES",
+        images
+      });
+    }, 600)
   };
 };

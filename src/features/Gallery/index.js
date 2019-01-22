@@ -19,21 +19,19 @@ const mapStateToProps = state => ({
 
 class Gallery extends Component {
   componentDidMount() {
-    // this.props.getAllImages();
     this.props.dispatch(getImages());
   }
 
   render() {
+    const { gallery } = this.props;
     return (
       <div className="gallery">
-        {this.props.gallery === null ? (
+        {gallery === null ? (
           <div className="spinner" />
         ) : (
-          <>
-            <GalleryImage />
-            <GalleryImage />
-            <GalleryImage marginRight={0} />
-          </>
+          gallery.images.map((image, key) => 
+            <GalleryImage key={key} img={image} />
+          )
         )}
       </div>
     );

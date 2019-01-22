@@ -6,8 +6,8 @@ export const gallery = (state = null, action) => {
       return [...state, { id: 123, url: "http://lalala.test/test.png" }];
 
     case GET_IMAGES:
-      const images = action.images
-      return {...state, images}
+      const images = action.images;
+      return { ...state, images };
 
     default:
       return state;
