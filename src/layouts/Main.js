@@ -31,6 +31,21 @@ const Main = () => {
           </ul>
           <div className="info">
             <p>
+              <span role="img" aria-label="Panda">
+                🐼
+              </span>
+              <span role="img" aria-label="Panda">
+                🐼
+              </span>
+              <span role="img" aria-label="Panda">
+                🐼
+              </span>
+              <span role="img" aria-label="Panda">
+                🐼
+              </span>
+              <span style={{marginLeft: 10}}><a href="https://">walker.afrika.com/user/dsa</a></span>
+            </p>
+            <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
               id luctus metus. Donec hendrerit ultricies nisl, sed aliquet ex
               laoreet eu. Cras vulputate in nibh eleifend vehicula. Pellentesque

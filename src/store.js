@@ -2,7 +2,16 @@ import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "./rootReducer";
 import thunk from "redux-thunk";
 
-const initialState = {};
+const initialState = {
+  gallery: {
+    images: [],
+    modalWindow: {
+      isOpen: false,
+      img: null,
+      pos: null
+    }
+  }
+};
 
 export const store = createStore(
   rootReducer,

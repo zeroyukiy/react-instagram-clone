@@ -30,6 +30,7 @@
 // };
 
 import { fetchImage } from "./api";
+import { OPEN_MODAL_IMAGE, CLOSE_MODAL_IMAGE } from "./actionTypes";
 
 export const getImages = () => {
   return async dispatch => {
@@ -43,6 +44,22 @@ export const getImages = () => {
         type: "GET_IMAGES",
         images
       });
-    }, 600)
+    }, 600);
+  };
+};
+
+export const openModalWindow = img => {
+  return {
+    type: OPEN_MODAL_IMAGE,
+    isOpen: true,
+    img
+  };
+};
+
+export const closeModalWindow = () => {
+  return {
+    type: CLOSE_MODAL_IMAGE,
+    isOpen: false,
+    img: null
   };
 };

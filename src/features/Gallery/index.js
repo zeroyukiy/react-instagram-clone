@@ -1,86 +1,61 @@
 import React, { Component } from "react";
 import GalleryImage from "./Image";
 import { connect } from "react-redux";
-// import { GET_IMAGES } from "./actionTypes";
-import { getImages } from "./actions";
-import GalleryBoxImage from "./BoxImage";
+import { getImages, openModalWindow, closeModalWindow } from "./actions";
+import ModalWindowGallery from "./ModalWindow";
 
 const mapStateToProps = state => ({
   gallery: state.gallery
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   getAllImages() {
-//     // return dispatch({
-//     //   type: GET_IMAGES
-//     // });
-//     return dispatch(getImages());
-//   }
-// });
-
 class Gallery extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      galleryBoxImageIsOpen: false,
-      img: null,
-      clicker: ""
-    };
-  }
-
   componentDidMount() {
     this.props.dispatch(getImages());
   }
 
-  openBoxImage = img => {
-    return !this.state.galleryBoxImageIsOpen
-      ? this.setState({
-          galleryBoxImageIsOpen: true,
-          img
-        })
+  openModalWindow = img => {
+    return !this.props.gallery.modalWindow.isOpen
+      ? this.props.dispatch(openModalWindow(img))
       : "";
   };
 
-  closeBoxImageOnMouseLeave = e => {
+  closeModalWindowOnMouseClick = e => {
     if (e.target) {
-      return;
-    } else {
-      console.log("dsfsf");
-      this.setState({
-        galleryBoxImageIsOpen: false,
-        img: null
-      });
+      this.props.dispatch(closeModalWindow());
     }
   };
 
   render() {
     const { gallery } = this.props;
-    const { galleryBoxImageIsOpen, img } = this.state;
+    const { isOpen, img } = this.props.gallery.modalWindow;
+
     return (
       <div className="gallery">
-        <GalleryBoxImage
-          isOpen={galleryBoxImageIsOpen}
-          img={img}
-          closeBoxImageOnMouseLeave={this.closeBoxImageOnMouseLeave}
-        />
-        {gallery === null ? (
+        {gallery.images.length === 0 ? (
           <div className="spinner" />
         ) : (
           gallery.images.map((image, key) => (
             <GalleryImage
               key={key}
               img={image}
-              openBoxImage={img => this.openBoxImage(img)}
+              openModalWindow={() => this.openModalWindow(image)}
             />
           ))
+        )}
+        {isOpen ? (
+          <ModalWindowGallery
+            isOpen={isOpen}
+            img={img}
+            closeModalWindowOnMouseClick={e =>
+              this.closeModalWindowOnMouseClick(e)
+            }
+          />
+        ) : (
+          ""
         )}
       </div>
     );
   }
 }
 
-export default (Gallery = connect(
-  mapStateToProps
-  // mapDispatchToProps
-)(Gallery));
+export default (Gallery = connect(mapStateToProps)(Gallery));
