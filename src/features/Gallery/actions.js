@@ -30,21 +30,29 @@
 // };
 
 import { fetchImage } from "./api";
-import { OPEN_MODAL_IMAGE, CLOSE_MODAL_IMAGE } from "./actionTypes";
+import {
+  OPEN_MODAL_IMAGE,
+  CLOSE_MODAL_IMAGE,
+  CLEAR_GALLERY
+} from "./actionTypes";
 
 export const getImages = () => {
   return async dispatch => {
     let images = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 9; i++) {
       const image = await fetchImage();
       await images.push(image);
     }
-    setTimeout(() => {
-      dispatch({
-        type: "GET_IMAGES",
-        images
-      });
-    }, 600);
+    dispatch({
+      type: "GET_IMAGES",
+      images
+    });
+  };
+};
+
+export const clearGallery = () => {
+  return {
+    type: CLEAR_GALLERY
   };
 };
 

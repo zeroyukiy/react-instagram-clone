@@ -43,7 +43,9 @@ const Main = () => {
               <span role="img" aria-label="Panda">
                 🐼
               </span>
-              <span style={{marginLeft: 10}}><a href="https://">walker.afrika.com/user/dsa</a></span>
+              <span style={{ marginLeft: 10 }}>
+                <a href="https://">walker.afrika.com/user/dsa</a>
+              </span>
             </p>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas

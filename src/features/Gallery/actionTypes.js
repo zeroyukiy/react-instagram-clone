@@ -1,4 +1,4 @@
 export const GET_IMAGES = "GET_IMAGES";
 export const OPEN_MODAL_IMAGE = "OPEN_MODAL_IMAGE";
 export const CLOSE_MODAL_IMAGE = "CLOSE_MODAL_IMAGE";
-
+export const CLEAR_GALLERY = "CLEAR_GALLERY";

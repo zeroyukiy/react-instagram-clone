@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import GalleryImage from "./Image";
 import { connect } from "react-redux";
-import { getImages, openModalWindow, closeModalWindow } from "./actions";
+import { getImages, clearGallery, openModalWindow, closeModalWindow } from "./actions";
 import ModalWindowGallery from "./ModalWindow";
 
 const mapStateToProps = state => ({
@@ -11,6 +11,10 @@ const mapStateToProps = state => ({
 class Gallery extends Component {
   componentDidMount() {
     this.props.dispatch(getImages());
+  }
+
+  componentWillUnmount() {
+    this.props.dispatch(clearGallery());
   }
 
   openModalWindow = img => {
