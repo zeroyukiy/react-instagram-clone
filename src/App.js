@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 import Navbar from "./layouts/Navbar";
 import Main from "./layouts/Main";
 
