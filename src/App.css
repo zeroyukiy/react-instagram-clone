@@ -70,8 +70,8 @@ a:link:active {
   }
 }
 
-.nav-search {
-}
+/* .nav-search {
+} */
 
 .nav-search .search {
   box-sizing: border-box;
@@ -91,8 +91,8 @@ a:link:active {
   text-align: left;
 }
 
-.nav-account {
-}
+/* .nav-account {
+} */
 
 main {
   display: flex;
