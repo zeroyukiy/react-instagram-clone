@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import GalleryImage from "./Image";
 import { connect } from "react-redux";
-import { getImages, clearGallery, openModalWindow, closeModalWindow } from "./actions";
+import {
+  getImages,
+  clearGallery,
+  openModalWindow,
+  closeModalWindow
+} from "./actions";
 import ModalWindowGallery from "./ModalWindow";
+import PropTypes from "prop-types";
 
 const mapStateToProps = state => ({
   gallery: state.gallery
@@ -61,5 +67,10 @@ class Gallery extends Component {
     );
   }
 }
+
+Gallery.propTypes = {
+  gallery: PropTypes.object,
+  dispatch: PropTypes.func
+};
 
 export default (Gallery = connect(mapStateToProps)(Gallery));

@@ -1,7 +1,9 @@
 import React from "react";
 import Gallery from "../features/Gallery";
+import PropTypes from "prop-types";
 
-const Main = () => {
+const Main = ({ auth }) => {
+  const { email } = auth.user;
   return (
     <main>
       <div className="header">
@@ -12,7 +14,7 @@ const Main = () => {
         </div>
         <div className="section">
           <div className="username">
-            <h3>Test123456</h3>
+            {email ? <h3>{email}</h3> : <h3>Guest123</h3>}
             <button className="btn btn-primary">Follow</button>
             <button className="btn btn-primary">
               <i className="fas fa-arrow-down" />
@@ -61,5 +63,9 @@ const Main = () => {
     </main>
   );
 };
+
+Main.propTypes = {
+  auth: PropTypes.object
+}
 
 export default Main;

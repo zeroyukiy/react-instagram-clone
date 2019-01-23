@@ -10,6 +10,12 @@ const initialState = {
       img: null,
       pos: null
     }
+  },
+  auth: {
+    loading: false,
+    user: {
+      email: null
+    }
   }
 };
 

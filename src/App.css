@@ -361,3 +361,36 @@ main .gallery {
     no-repeat center center;
   background-size: cover;
 }
+
+/* ACCOUNTS */
+.login-account {
+  width: 350px;
+  margin: 50px;
+  background-color: white;
+  border: 1px solid #e6e6e6;
+  border-radius: 1px;
+  padding: 30px 40px;
+  box-sizing: border-box;
+}
+
+.input-style input {
+  width: 100%;
+  padding: 9px;
+  font-size: 12px;
+  box-sizing: border-box;
+  background-color: #fafafa;
+  border: 1px solid;
+  border-color: #dbdbdb;
+  border-radius: 3px;
+  color: rgba(0, 0, 0, 0.85);
+  margin: 10px 0;
+}
+
+.email-input input:focus {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 1px;
+}
+
+.btn-lg {
+  width: 100%;
+}

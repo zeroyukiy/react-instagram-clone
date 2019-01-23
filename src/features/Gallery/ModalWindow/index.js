@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-export default class ModalWindow extends Component {
+class ModalWindow extends Component {
   constructor(props) {
     super(props);
     this.node = React.createRef();
@@ -54,3 +55,10 @@ export default class ModalWindow extends Component {
     );
   }
 }
+
+ModalWindow.propTypes = {
+  img: PropTypes.string,
+  closeModalWindowOnMouseClick: PropTypes.func
+};
+
+export default ModalWindow;

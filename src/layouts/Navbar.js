@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const Navbar = () => {
+const Navbar = ({ auth }) => {
+  const { email } = auth.user;
   return (
     <div className="navbar">
       <div className="container">
@@ -18,16 +20,26 @@ const Navbar = () => {
           <input type="text" className="search" placeholder="Search" />
         </div>
         <div className="nav-account">
-          <Link to="/signin">
-            <button className="btn btn-primary">Sign in</button>
-          </Link>
-          <Link to="/register">
-            <button className="btn btn-default">Register</button>
-          </Link>
+          {email ? (
+            <h4>{email}</h4>
+          ) : (
+            <>
+              <Link to="/signin">
+                <button className="btn btn-primary">Sign in</button>
+              </Link>
+              <Link to="/register">
+                <button className="btn btn-default">Register</button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>
   );
+};
+
+Navbar.propTypes = {
+  auth: PropTypes.object
 };
 
 export default Navbar;
