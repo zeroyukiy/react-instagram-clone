@@ -1,7 +1,8 @@
 import { AUTHENTICATE, LOADING } from "./actionTypes";
+import { authenticate } from "./api";
 
 export const login = user => {
-  return dispatch => {
+  return async dispatch => {
     // here real call to the api
     dispatch({
       type: LOADING,
@@ -9,24 +10,25 @@ export const login = user => {
     });
 
     // if the credentials are correct
-    setTimeout(() => {
-      if (user.email === "prova110@hotmail.com" && user.password === "asd111") {
-        setTimeout(() => {
-          dispatch({
-            type: AUTHENTICATE,
-            user
-          });
-          dispatch({
-            type: LOADING,
-            status: false
-          });
-        }, 3000);
-      } else {
+    const response = await authenticate(user);
+    if (response.status === "success") {
+      setTimeout(() => {
+        localStorage.setItem("email", response.data.email)
+        dispatch({
+          type: AUTHENTICATE,
+          user
+        });
         dispatch({
           type: LOADING,
           status: false
         });
-      }
-    }, 300);
+      }, 1500);
+    } else {
+      dispatch({
+        type: LOADING,
+        status: false
+      });
+      console.log("succhia qua");
+    }
   };
 };

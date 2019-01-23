@@ -21,7 +21,30 @@ const Navbar = ({ auth }) => {
         </div>
         <div className="nav-account">
           {email ? (
-            <h4>{email}</h4>
+            <>
+              <ul className="nav-links">
+                <li>
+                  <Link to="/">
+                    <i className="fas fa-compass" />
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/">
+                    <i className="fas fa-heart" />
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/">
+                    <i className="fas fa-user" />
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/logout">
+                    <i className="fas fa-sign-out-alt" />
+                  </Link>
+                </li>
+              </ul>
+            </>
           ) : (
             <>
               <Link to="/signin">

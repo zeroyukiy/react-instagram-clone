@@ -16,7 +16,6 @@ a:link:active {
   opacity: 0.7;
 }
 
-
 .App {
   width: 100%;
   display: flex;
@@ -93,6 +92,23 @@ a:link:active {
 
 /* .nav-account {
 } */
+
+.nav-links {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.nav-links li {
+  float: left;
+  margin: 0 15px;
+  font-size: 16px;
+}
+
+.nav-links li i {
+  font-size: 22px;
+  color: rgba(0, 0, 0, 0.75);
+}
 
 main {
   display: flex;

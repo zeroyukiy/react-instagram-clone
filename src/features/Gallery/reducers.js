@@ -5,7 +5,16 @@ import {
   CLEAR_GALLERY
 } from "./actionTypes";
 
-export const gallery = (state = null, action) => {
+const initialState = {
+  images: [],
+  modalWindow: {
+    isOpen: false,
+    img: null,
+    pos: null
+  }
+};
+
+export const gallery = (state = initialState, action) => {
   switch (action.type) {
     case CLEAR_GALLERY:
       return { ...state, images: [] };

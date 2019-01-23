@@ -1,6 +1,18 @@
 import { AUTHENTICATE, LOADING } from "./actionTypes";
 
-export const auth = (state = {}, action) => {
+const initialState = {
+  loading: false,
+  user: {
+    email: null
+  }
+};
+
+const isLogged = localStorage.getItem("email");
+if (isLogged) {
+  initialState.user.email = isLogged;
+}
+
+export const auth = (state = initialState, action) => {
   switch (action.type) {
     case LOADING:
       return { ...state, loading: action.status };

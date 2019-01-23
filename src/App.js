@@ -6,6 +6,7 @@ import { Switch, Route, withRouter } from "react-router-dom";
 import Login from "./features/Login";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import Logout from "./features/Logout";
 
 const mapStateToProps = state => ({
   auth: state.auth
@@ -30,6 +31,7 @@ class App extends Component {
           />
           {/* <Route exact path="/" component={Main} /> */}
           <Route path="/signin" component={Login} />
+          <Route path="/logout" component={Logout} />
           <Route component={NotFoundComponent} />
         </Switch>
       </div>
