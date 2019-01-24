@@ -53,8 +53,8 @@ a:link:active {
 }
 
 .nav-logo .name {
-  width: 84px;
-  height: 28px;
+  width: 124px;
+  height: 32px;
   background: url('./logo.png')
   /* background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png") */
     no-repeat center center;

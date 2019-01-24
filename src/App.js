@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
-import Navbar from "./layouts/Navbar";
-import Main from "./layouts/Main";
+import Navbar from "./views/Navbar";
+import Home from "./views/Home";
+// import Main from "./views/Main";
+import Profile from "./features/PublicProfile";
 import { Switch, Route, withRouter } from "react-router-dom";
-import Login from "./features/Login";
+import { AuthLogin, AuthLogout, AuthSignup } from "./features/Auth";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import Logout from "./features/Logout";
 
 const mapStateToProps = state => ({
   auth: state.auth
@@ -24,14 +25,24 @@ class App extends Component {
       <div className="App">
         <Navbar auth={this.props.auth} />
         <Switch>
+          <Route exact path="/" component={Home} />
           <Route
             exact
-            path="/"
-            render={() => <Main auth={this.props.auth} />}
+            path="/@:user"
+            render={props => (
+              <Profile auth={this.props.auth} params={props.match.params} />
+            )}
           />
-          {/* <Route exact path="/" component={Main} /> */}
-          <Route path="/signin" component={Login} />
-          <Route path="/logout" component={Logout} />
+          {/* <Route
+            exact
+            path="/@:user"
+            render={props => (
+              <Main auth={this.props.auth} params={props.match.params} />
+            )}
+          /> */}
+          <Route path="/signin" component={AuthLogin} />
+          <Route path="/logout" component={AuthLogout} />
+          <Route path="/signup" component={AuthSignup} />
           <Route component={NotFoundComponent} />
         </Switch>
       </div>
@@ -44,4 +55,3 @@ App.propTypes = {
 };
 
 export default withRouter(connect(mapStateToProps)(App));
-// export default App

@@ -1,15 +1,15 @@
-import { AUTHENTICATE, LOADING } from "./actionTypes";
+import { AUTHENTICATE, LOADING, LOGOUT } from "./actionTypes";
 
 const initialState = {
   loading: false,
   user: {
-    email: null
+    username: null
   }
 };
 
-const isLogged = localStorage.getItem("email");
-if (isLogged) {
-  initialState.user.email = isLogged;
+const user = localStorage.getItem("user");
+if (user) {
+  initialState.user.username = user;
 }
 
 export const auth = (state = initialState, action) => {
@@ -18,11 +18,19 @@ export const auth = (state = initialState, action) => {
       return { ...state, loading: action.status };
 
     case AUTHENTICATE:
-      const { email } = action.user;
+      const { username } = action.user;
       return {
         ...state,
         user: {
-          email
+          username
+        }
+      };
+
+    case LOGOUT:
+      return {
+        ...state,
+        user: {
+          username: null
         }
       };
 

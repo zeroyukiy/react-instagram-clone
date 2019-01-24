@@ -2,23 +2,29 @@ import React from "react";
 import Gallery from "../features/Gallery";
 import PropTypes from "prop-types";
 
-const Main = ({ auth }) => {
-  const { email } = auth.user;
+const Main = ({ auth, params }) => {
+  const { username } = auth.user;
   return (
     <main>
       <div className="header">
         <div className="left-header">
           <div className="avatar">
-            <img src="https://f4.bcbits.com/img/0010186131_10.jpg" alt="" />
+            <img src={avatar} alt="" />
           </div>
         </div>
         <div className="section">
           <div className="username">
-            {email ? <h3>{email}</h3> : <h3>Guest123</h3>}
-            <button className="btn btn-primary">Follow</button>
-            <button className="btn btn-primary">
-              <i className="fas fa-arrow-down" />
-            </button>
+            {<h3>{params.user}</h3>}
+            {username === params.user ? (
+              <button className="btn btn-primary">Edit Profile</button>
+            ) : (
+              <>
+                <button className="btn btn-primary">Follow</button>
+                <button className="btn btn-primary">
+                  <i className="fas fa-arrow-down" />
+                </button>
+              </>
+            )}
           </div>
           <ul className="stats">
             <li className="posts">
@@ -49,11 +55,13 @@ const Main = ({ auth }) => {
                 <a href="https://">walker.afrika.com/user/dsa</a>
               </span>
             </p>
+            <p>{fullname}</p>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
+              {description}
+              {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
               id luctus metus. Donec hendrerit ultricies nisl, sed aliquet ex
               laoreet eu. Cras vulputate in nibh eleifend vehicula. Pellentesque
-              blandit vel.
+              blandit vel. */}
             </p>
           </div>
         </div>
@@ -66,6 +74,6 @@ const Main = ({ auth }) => {
 
 Main.propTypes = {
   auth: PropTypes.object
-}
+};
 
 export default Main;

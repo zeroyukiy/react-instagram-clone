@@ -1,4 +1,4 @@
-import { AUTHENTICATE, LOADING } from "./actionTypes";
+import { AUTHENTICATE, LOADING, LOGOUT } from "./actionTypes";
 import { authenticate } from "./api";
 
 export const login = user => {
@@ -12,17 +12,15 @@ export const login = user => {
     // if the credentials are correct
     const response = await authenticate(user);
     if (response.status === "success") {
-      setTimeout(() => {
-        localStorage.setItem("email", response.data.email)
-        dispatch({
-          type: AUTHENTICATE,
-          user
-        });
-        dispatch({
-          type: LOADING,
-          status: false
-        });
-      }, 1500);
+      localStorage.setItem("user", response.data.username);
+      dispatch({
+        type: AUTHENTICATE,
+        user: response.data
+      });
+      dispatch({
+        type: LOADING,
+        status: false
+      });
     } else {
       dispatch({
         type: LOADING,
@@ -30,5 +28,15 @@ export const login = user => {
       });
       console.log("succhia qua");
     }
+  };
+};
+
+export const logout = () => {
+  return dispatch => {
+    localStorage.removeItem("user");
+    dispatch({
+      type: LOGOUT
+    });
+    console.log("user logged out");
   };
 };

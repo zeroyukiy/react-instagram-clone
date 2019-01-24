@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const Navbar = ({ auth }) => {
-  const { email } = auth.user;
+  const { username } = auth.user;
   return (
     <div className="navbar">
       <div className="container">
@@ -20,7 +20,7 @@ const Navbar = ({ auth }) => {
           <input type="text" className="search" placeholder="Search" />
         </div>
         <div className="nav-account">
-          {email ? (
+          {username ? (
             <>
               <ul className="nav-links">
                 <li>
@@ -34,7 +34,7 @@ const Navbar = ({ auth }) => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/">
+                  <Link to={"/@"+username}>
                     <i className="fas fa-user" />
                   </Link>
                 </li>
@@ -50,8 +50,8 @@ const Navbar = ({ auth }) => {
               <Link to="/signin">
                 <button className="btn btn-primary">Sign in</button>
               </Link>
-              <Link to="/register">
-                <button className="btn btn-default">Register</button>
+              <Link to="/signup">
+                <button className="btn btn-default">Sign up</button>
               </Link>
             </>
           )}
