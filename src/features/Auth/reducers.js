@@ -15,10 +15,10 @@ if (user) {
 export const auth = (state = initialState, action) => {
   switch (action.type) {
     case LOADING:
-      return { ...state, loading: action.status };
+      return { ...state, loading: action.payload.status };
 
     case AUTHENTICATE:
-      const { username } = action.user;
+      const { username } = action.payload;
       return {
         ...state,
         user: {

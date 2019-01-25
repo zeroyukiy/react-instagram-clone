@@ -17,8 +17,20 @@ const initialState = {
 export const profile = (state = initialState, action) => {
   switch (action.type) {
     case ADD_INFO_PROFILE:
-      const { avatar, username, fullname, description, stats } = action.payload;
-      return { ...state, avatar, username, fullname, description, stats };
+      const { name, login, picture } = action.payload;
+      return {
+        ...state,
+        avatar: picture.large,
+        username: login.username,
+        fullname: `${name.first} ${name.last}`,
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras commodo vel nunc id vestibulum.",
+        stats: {
+          posts: 13,
+          followers: 70,
+          following: 17
+        }
+      };
 
     case LOADING_PROFILE:
       const { isLoading } = action.payload;

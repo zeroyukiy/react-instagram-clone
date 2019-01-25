@@ -11,13 +11,13 @@ const mapStateToProps = state => ({
 
 class HeaderProfile extends Component {
   componentDidMount() {
-    this.props.dispatch(addInfoProfile(this.props.params.user));
+    this.props.dispatch(addInfoProfile());
   }
 
   componentDidUpdate(prevProps) {
     const { user } = this.props.params;
     if (prevProps.params.user !== user) {
-      prevProps.dispatch(addInfoProfile(user));
+      prevProps.dispatch(addInfoProfile());
     }
   }
 

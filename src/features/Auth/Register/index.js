@@ -86,7 +86,8 @@ class Register extends Component {
 }
 
 Register.propTypes = {
-  auth: PropTypes.object
+  auth: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 export default Register;

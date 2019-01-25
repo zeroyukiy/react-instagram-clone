@@ -1,6 +1,6 @@
-export const getInfoProfile = username => {
-  return fetch("http://localhost:8000/users/" + username)
+export const getInfoProfile = () => {
+  return fetch("https://randomuser.me/api/")
     .then(response => response.json())
-    .then(data => data.data)
+    .then(data => data.results[0])
     .catch(error => error);
 };

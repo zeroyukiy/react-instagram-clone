@@ -1,9 +1,9 @@
 import { ADD_INFO_PROFILE, LOADING_PROFILE } from "./actionTypes";
 import { getInfoProfile } from "./api";
 
-export const addInfoProfile = username => {
+export const addInfoProfile = () => {
   return async dispatch => {
-    const profile = await getInfoProfile(username);
+    const profile = await getInfoProfile();
     if (profile) {
       dispatch({
         type: LOADING_PROFILE,
@@ -24,7 +24,7 @@ export const addInfoProfile = username => {
         });
       }, 500);
     } else {
-      console.log("stu cazz");
+      console.log("something wrong, profile api call");
     }
   };
 };

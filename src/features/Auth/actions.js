@@ -6,27 +6,33 @@ export const login = user => {
     // here real call to the api
     dispatch({
       type: LOADING,
-      status: true
+      payload: {
+        status: true
+      }
     });
 
     // if the credentials are correct
     const response = await authenticate(user);
-    if (response.status === "success") {
-      localStorage.setItem("user", response.data.username);
+    if (response) {
+      localStorage.setItem("user", response.username);
       dispatch({
         type: AUTHENTICATE,
-        user: response.data
+        payload: response
       });
       dispatch({
         type: LOADING,
-        status: false
+        payload: {
+          status: false
+        }
       });
     } else {
       dispatch({
         type: LOADING,
-        status: false
+        payload: {
+          status: false
+        }
       });
-      console.log("succhia qua");
+      console.log("something wrong, login credentials");
     }
   };
 };
