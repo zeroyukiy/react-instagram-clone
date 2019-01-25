@@ -1,12 +1,13 @@
 import React from "react";
 
-const Section = ({ user, params }) => {
-  const { username, fullname, description } = user;
+const Section = ({ auth, profile, params }) => {
+  const { username, fullname, description, stats } = profile;
+  const currentUser = auth.user.username;
   return (
     <div className="section">
       <div className="username">
         {<h3>{params.user}</h3>}
-        {username === params.user ? (
+        {username === currentUser ? (
           <button className="btn btn-primary">Edit Profile</button>
         ) : (
           <>
@@ -19,13 +20,13 @@ const Section = ({ user, params }) => {
       </div>
       <ul className="stats">
         <li className="posts">
-          <strong>23</strong> posts
+          <strong>{stats.posts}</strong> posts
         </li>
         <li className="followers">
-          <strong>141</strong> followers
+          <strong>{stats.followers}</strong> followers
         </li>
         <li className="following">
-          <strong>15</strong> following
+          <strong>{stats.following}</strong> following
         </li>
       </ul>
       <div className="info">

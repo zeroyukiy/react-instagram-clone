@@ -2,18 +2,42 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import HeaderProfileAvatar from "./Avatar";
 import HeaderProfileSection from "./Section";
+import { addInfoProfile } from "./actions";
 
 const mapStateToProps = state => ({
+  profile: state.profile,
   auth: state.auth
 });
 
 class HeaderProfile extends Component {
+  componentDidMount() {
+    this.props.dispatch(addInfoProfile(this.props.params.user));
+  }
+
+  componentDidUpdate(prevProps) {
+    const { user } = this.props.params;
+    if (prevProps.params.user !== user) {
+      prevProps.dispatch(addInfoProfile(user));
+    }
+  }
+
   render() {
     const { params } = this.props;
+    const { profile, auth } = this.props;
     return (
       <div className="header">
-        <HeaderProfileAvatar avatar={this.props.auth.user.avatar} />
-        <HeaderProfileSection user={this.props.auth.user} params={params} />
+        <HeaderProfileAvatar avatar={profile.avatar} />
+        {profile.isLoading ? (
+          <div className="spinner" />
+        ) : (
+          <>
+            <HeaderProfileSection
+              auth={auth}
+              profile={profile}
+              params={params}
+            />
+          </>
+        )}
       </div>
     );
   }

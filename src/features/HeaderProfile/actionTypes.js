@@ -1,0 +1,2 @@
+export const ADD_INFO_PROFILE = "ADD_INFO_PROFILE";
+export const LOADING_PROFILE = "LOADING_PROFILE";
