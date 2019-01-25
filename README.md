@@ -3,4 +3,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In progress
 
 https://randomuser.me (for fake data - api)
+
 https://www.lipsum.com (for fake text)
