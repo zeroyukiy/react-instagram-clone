@@ -7,7 +7,7 @@ import {
   openModalWindow,
   closeModalWindow
 } from "./actions";
-import ModalWindowGallery from "./ModalWindow";
+import GalleryModalWindow from "./ModalWindow";
 import PropTypes from "prop-types";
 
 const mapStateToProps = state => ({
@@ -53,7 +53,7 @@ class Gallery extends Component {
           ))
         )}
         {isOpen ? (
-          <ModalWindowGallery
+          <GalleryModalWindow
             isOpen={isOpen}
             img={img}
             closeModalWindowOnMouseClick={e =>
