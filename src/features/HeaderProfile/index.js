@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import HeaderProfileAvatar from "./Avatar";
 import HeaderProfileSection from "./Section";
-import { addInfoProfile } from "./actions";
+import { addInfoProfile, addInfoProfileCurrentUser } from "./actions";
 
 const mapStateToProps = state => ({
   profile: state.profile,
@@ -11,13 +11,17 @@ const mapStateToProps = state => ({
 
 class HeaderProfile extends Component {
   componentDidMount() {
-    this.props.dispatch(addInfoProfile());
+    this.props.params.user === this.props.auth.user.username
+      ? this.props.dispatch(addInfoProfileCurrentUser(this.props.auth.user))
+      : this.props.dispatch(addInfoProfile());
   }
 
   componentDidUpdate(prevProps) {
     const { user } = this.props.params;
     if (prevProps.params.user !== user) {
-      prevProps.dispatch(addInfoProfile());
+      this.props.params.user === this.props.auth.user.username
+      ? this.props.dispatch(addInfoProfileCurrentUser(this.props.auth.user))
+      : prevProps.dispatch(addInfoProfile());
     }
   }
 

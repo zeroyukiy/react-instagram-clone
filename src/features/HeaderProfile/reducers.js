@@ -17,12 +17,12 @@ const initialState = {
 export const profile = (state = initialState, action) => {
   switch (action.type) {
     case ADD_INFO_PROFILE:
-      const { name, login, picture } = action.payload;
+      const { username, fullname, avatar } = action.payload;
       return {
         ...state,
-        avatar: picture.large,
-        username: login.username,
-        fullname: `${name.first} ${name.last}`,
+        avatar,
+        username,
+        fullname,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras commodo vel nunc id vestibulum.",
         stats: {

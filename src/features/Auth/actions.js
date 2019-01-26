@@ -1,5 +1,6 @@
 import { AUTHENTICATE, LOADING, LOGOUT } from "./actionTypes";
 import { authenticate } from "./api";
+import { getInfoProfile } from "../HeaderProfile/api";
 
 export const login = user => {
   return async dispatch => {
@@ -14,10 +15,17 @@ export const login = user => {
     // if the credentials are correct
     const response = await authenticate(user);
     if (response) {
-      localStorage.setItem("user", response.username);
+      // load fake data for the user
+      let user = await getInfoProfile();
+      user = {
+        username: user.login.username,
+        avatar: user.picture.large,
+        fullname: `${user.name.first} ${user.name.last}`
+      };
+      localStorage.setItem("user", JSON.stringify(user));
       dispatch({
         type: AUTHENTICATE,
-        payload: response
+        payload: user
       });
       dispatch({
         type: LOADING,

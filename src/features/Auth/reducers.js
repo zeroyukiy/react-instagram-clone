@@ -1,15 +1,26 @@
 import { AUTHENTICATE, LOADING, LOGOUT } from "./actionTypes";
 
-const initialState = {
+let initialState = {
   loading: false,
   user: {
-    username: null
+    username: "",
+    fullname: "",
+    avatar: ""
   }
 };
 
-const user = localStorage.getItem("user");
+const user = JSON.parse(localStorage.getItem("user"));
+
 if (user) {
-  initialState.user.username = user;
+  const { username, fullname, avatar } = user;
+  initialState = {
+    loading: false,
+    user: {
+      username,
+      fullname,
+      avatar
+    }
+  };
 }
 
 export const auth = (state = initialState, action) => {
@@ -18,11 +29,13 @@ export const auth = (state = initialState, action) => {
       return { ...state, loading: action.payload.status };
 
     case AUTHENTICATE:
-      const { username } = action.payload;
+      const { username, fullname, avatar } = action.payload;
       return {
         ...state,
         user: {
-          username
+          username,
+          fullname,
+          avatar
         }
       };
 
