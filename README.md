@@ -2,6 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In progress
 
-https://randomuser.me (for fake data - api)
+https://randomuser.me (fake data - api)
 
-https://www.lipsum.com (for fake text)
+https://www.lipsum.com (fake data text)
+
+https://dog.ceo/dog-api (fake data images)
